@@ -71,7 +71,6 @@ class PaymentController extends Controller
             $transaction->save();
 
             $frontendUrl = config('app.frontend_url') . '/payment-status';
-            Log::info("{$frontendUrl}?status={$transaction->status}&reference={$transaction->reference}");
             return Redirect::to("{$frontendUrl}?status={$transaction->status}&reference={$transaction->reference}");
         } catch (\Exception $e) {
             Log::error('Payment callback error: ', ['error' => $e->getMessage()]);
