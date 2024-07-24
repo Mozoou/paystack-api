@@ -64,3 +64,48 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Test the Payment Initialization Endpoint
+
+1.  **Open Postman** and create a new request.
+    
+2.  **Set the request method to `POST`**.
+    
+3.  **Enter the URL** for your endpoint:
+
+    `https://nameless-reef-15409-45cc60f1c5ef.herokuapp.com/api/pay`
+
+**In the Body tab**:
+
+-   Select **raw**.
+-   Set the type to **JSON**.
+-   Enter the following request payload:
+
+        {
+	        "email": "test@example.com",
+	        "domain": "example.com",
+	        "amount": 1500
+        }
+**Send the request** and check the response.
+
+
+## Test the Payment Callback Endpoint
+
+1.  **Open Postman** and create a new request.
+    
+2.  **Set the request method to `GET`**.
+    
+3.  **Enter the URL** for your endpoint:
+    
+    `https://nameless-reef-15409-45cc60f1c5ef.herokuapp.com/api/pay/callback`
+
+**Add query parameters** to simulate Paystack's callback:
+
+-   `status=success`
+-   `reference=test_reference`
+
+Your complete URL should look like this:
+
+    `https://nameless-reef-15409-45cc60f1c5ef.herokuapp.com/api/pay/callback?status=success&reference=test_reference`
+
+**Send the request** and check the response.
